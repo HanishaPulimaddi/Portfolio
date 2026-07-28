@@ -562,7 +562,7 @@ h1,h2,h3,h4{
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  height:440px;
+  height:460px;
   box-shadow:0 10px 26px rgba(34,49,66,.06);
   transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
@@ -663,6 +663,64 @@ h1,h2,h3,h4{
   border-bottom:1px solid transparent;
 }
 .exp-cert:hover, .exp-link:hover{ color:var(--accent); border-color:var(--accent); }
+
+/* ---------------- Experience Carousel (auto-scroll) ---------------- */
+.leadership-carousel{
+  position:relative;
+  margin-top:52px;
+  overflow:hidden;
+}
+.leadership-viewport{
+  overflow:hidden;
+  width:100%;
+}
+.leadership-carousel .leadership-grid{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:22px;
+  margin-top:0;
+  width:max-content;
+  animation:leadership-scroll 40s linear infinite;
+}
+.leadership-carousel .leadership-grid:hover{
+  animation-play-state:paused;
+}
+.leadership-carousel .exp-card{
+  flex:0 0 380px;
+  width:380px;
+}
+
+@keyframes leadership-scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(calc(-50% - 11px)); } /* -50% since content is duplicated, 11px = half the gap */
+}
+
+/* fade edges so cards don't hard-cut at the viewport bounds */
+.leadership-carousel::before,
+.leadership-carousel::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:60px;
+  z-index:2;
+  pointer-events:none;
+}
+.leadership-carousel::before{
+  left:0;
+  background:linear-gradient(90deg, var(--bg, #0d1319) 0%, transparent 100%);
+}
+.leadership-carousel::after{
+  right:0;
+  background:linear-gradient(270deg, var(--bg, #0d1319) 0%, transparent 100%);
+}
+
+@media (max-width: 600px){
+  .leadership-carousel .exp-card{
+    flex:0 0 280px;
+    width:280px;
+  }
+}
 
 /* ---------------- Skills / About split ---------------- */
 #skills .container{

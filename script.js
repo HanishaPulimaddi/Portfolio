@@ -373,3 +373,4 @@ if ('IntersectionObserver' in window && revealTargets.length) {
 } else {
   revealTargets.forEach((el) => el.classList.add('in'));
 }
+
