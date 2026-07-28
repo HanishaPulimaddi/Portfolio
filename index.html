@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hanisha Pulimaddi - Portfolio</title>
+<meta name="description" content="Software engineering student portfolio — projects, experience, and skills." />
+<script>
+  (function(){
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="stylesheet" href="style.css?v=20260721" />
+</head>
+<body>
+
+<canvas id="dotField" aria-hidden="true"></canvas>
+
+<nav class="navbar" aria-label="Primary">
+  <a href="#home" class="nav-item active" data-section="home" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
+    <span class="nav-tooltip">Home</span>
+  </a>
+  <a href="#projects" class="nav-item" data-section="projects" aria-label="Projects">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4.5l2 2H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    <span class="nav-tooltip">Projects</span>
+  </a>
+  <a href="#experience" class="nav-item" data-section="experience" aria-label="Leadership & Involvement">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M2.5 13h19"/></svg>
+    <span class="nav-tooltip">Involvement</span>
+  </a>
+  <a href="#contact" class="nav-item" data-section="contact" aria-label="Contact">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg>
+    <span class="nav-tooltip">Contact</span>
+  </a>
+  <a href="resume.pdf" class="nav-item" id="cvBtn" aria-label="View CV" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <span class="nav-tooltip">CV</span>
+  </a>
+  <button type="button" class="nav-item" id="themeToggle" aria-label="Toggle light and dark theme" aria-pressed="false">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+    <span class="nav-tooltip">Theme</span>
+  </button>
+</nav>
+
+<div class="cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV viewer" hidden>
+  <div class="cv-modal-backdrop" data-cv-close></div>
+  <div class="cv-modal-panel">
+    <div class="cv-modal-bar">
+      <span>Hanisha Pulimaddi — CV</span>
+      <div class="cv-modal-actions">
+        <a href="resume.pdf" download class="cv-modal-download">Download</a>
+        <button type="button" class="cv-modal-close" data-cv-close aria-label="Close CV viewer">✕</button>
+      </div>
+    </div>
+    <iframe id="cvFrame" class="cv-modal-frame" title="Hanisha Pulimaddi CV"></iframe>
+  </div>
+</div>
+
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Project video" hidden>
+  <div class="video-modal-backdrop" data-video-modal-close></div>
+  <div class="video-modal-panel">
+    <button type="button" class="video-modal-close" data-video-modal-close aria-label="Close video">✕</button>
+    <video id="videoModalPlayer" class="video-modal-player" controls playsinline></video>
+  </div>
+</div>
+
+
+<main>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-photo-flip" id="heroFlip" role="button" tabindex="0" aria-pressed="false" aria-label="Flip photo to reveal a quote">
+          <div class="hero-photo-inner">
+            <div class="hero-photo hero-photo-front">
+              <img src="Images/ProfilePicture.jpeg" alt="Hanisha Pulimaddi" class="hero-photo-img" />
+              <div class="hero-badge">
+                <svg viewBox="0 0 30 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+            </div>
+            <div class="hero-photo hero-photo-back" aria-hidden="true">
+              <p class="flip-quote"><span class="quote-mark">&ldquo;</span>Growing louder than my doubts!<span class="quote-mark">&rdquo;</span></p>
+            </div>
+          </div>
+        </div>
+        <h3>Hanisha Pulimaddi</h3>
+        <p>3rd year student at University of Technology Sydney, currently persuing a Bachelor of Engineering Honors (Software Engineering).
+          Open to roles in backend, full-stack, data analytics and applied AI.
+          </p>
+      </div>
+
+      <div class="hero-copy">
+        <h1 class="hero-headline">
+          <span class="sr-only">Student, Aspiring Software Engineer, AI Enthusiast</span>
+          <span class="type-text" id="typeText" aria-hidden="true"></span><span class="type-cursor" aria-hidden="true"></span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Selected Work</div>
+          <h2>Projects </h2>
+        </div>
+      </div>
+
+      <div class="projects-grid reveal">
+        <article class="project-card">
+          <div class="project-thumb project-video-wrap" data-video-wrap>
+            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/BNPL.mp4" aria-label="BNPL Loan Default Prediction demo video"></video>
+            <div class="video-controls">
+              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
+              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>BNPL Loan Default Prediction</h3>
+            <p>ML model predicting BNPL loan defaults using Logistic Regression and Random Forest, handling class imbalance.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Jupyter</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/HanishaPulimaddi/BNPL" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/HanishaPulimaddi/BNPL/blob/main/BNPL_Report.pdf" target="_blank" rel="noopener">Report →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb project-video-wrap" data-video-wrap>
+            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/FridgeIQ.mp4" aria-label="FridgeIQ demo video"></video>
+            <div class="video-controls">
+              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
+              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>FridgeIQ - Smart Fridge Inventory (DLCNN)</h3>
+            <p>Full-stack app that detects food items from fridge photos with a custom YOLOv5 model, then generates priced grocery lists using live Coles/Woolworths/Aldi pricing.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ/blob/main/DLCNN_FridgeIQ_FinalReport.docx" target="_blank" rel="noopener">Report →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb project-video-wrap" data-video-wrap>
+            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/AutomatedComplianceChecker.mp4" aria-label="FridgeIQ demo video"></video>
+            <div class="video-controls">
+              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
+              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Automated Compliance Checker</h3>
+            <p>Automated compliance checking system for civil engineers and architects, built during the Arrayah Chapter 3 Residency startup accelerator program.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">React</span>
+              <span class="tag">Leaflet</span>
+              <span class="tag">Grasshopper/Rhino</span>
+              <span class="tag">LLM APIs</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/tree/testing-branch" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/blob/testing-branch/ProjectEvaluationReport.docx" target="_blank" rel="noopener">Report →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Beyond the Classroom</div>
+          <h2>Leadership &amp; Involvement</h2>
+        </div>
+      </div>
+
+      <div class="leadership-grid reveal">
+        <article class="exp-card">
+          <div class="exp-photo exp-slideshow" data-slideshow>
+            <img src="Images/StudentGuide1.jpeg" alt="UTS Library Student Guide" class="slide active" />
+            <img src="Images/StudentGuide2.jpeg" alt="UTS Library Student Guide" class="slide" loading="lazy" />
+            <img src="Images/StudentGuide3.jpeg" alt="UTS Library Student Guide" class="slide" loading="lazy" />
+            <button type="button" class="slide-arrow slide-arrow-prev" data-slide-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow slide-arrow-next" data-slide-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <div class="exp-body">
+            <h3>UTS Library Student Guide</h3>
+            <div class="org">University of Technology Sydney</div>
+            <div class="when">Feb 2026 — Present</div>
+            <div class="exp-links">
+              <a class="exp-link" href="https://www.lib.uts.edu.au/whats-on/news/explore-the-library-this-spring-orientation" target="_blank" rel="noopener">Website →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-photo exp-slideshow" data-slideshow>
+            <img src="Images/Arrayah1.jpeg" alt="Arrayah Chapter 3 Residency" class="slide active" />
+            <img src="Images/Arrayah2.jpeg" alt="Arrayah Chapter 3 Residency" class="slide" loading="lazy" />
+            <img src="Images/Arrayah3.jpeg" alt="Arrayah Chapter 3 Residency" class="slide" loading="lazy" />
+            <img src="Images/Arrayah4.jpeg" alt="Arrayah Chapter 3 Residency" class="slide" loading="lazy" />
+            <button type="button" class="slide-arrow slide-arrow-prev" data-slide-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow slide-arrow-next" data-slide-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <div class="exp-body">
+            <h3>Arrayah (Chapter 3 Residency)</h3>
+            <div class="org">Startup Accelerator Program Residency Cohort</div>
+            <div class="when">Apr 2026 — May 2026</div>
+            <div class="exp-links">
+              <a class="exp-link" href="https://arrayah.city/" target="_blank" rel="noopener">Website →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-photo exp-slideshow" data-slideshow>
+            <img src="Images/WIEIT1.jpeg" alt="Women in Engineering & IT (WIEIT) mentorship" class="slide active" />
+            <img src="Images/WIEIT2.jpeg" alt="Women in Engineering & IT (WIEIT) mentorship" class="slide" loading="lazy" />
+            <img src="Images/WIEIT3.png" alt="Women in Engineering & IT (WIEIT) mentorship" class="slide" loading="lazy" />
+            <img src="Images/WIEIT4.png" alt="Women in Engineering & IT (WIEIT) mentorship" class="slide" loading="lazy" />
+            <button type="button" class="slide-arrow slide-arrow-prev" data-slide-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow slide-arrow-next" data-slide-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <div class="exp-body">
+            <h3>Gender Equity Ambassador + Mentee @ Lucy Mentorship Program</h3>
+            <div class="org">Women in Engineering &amp; IT (WIEIT), UTS</div>
+            <div class="when">Feb 2025 — August 2026</div>
+            <div class="exp-links">
+              <a class="exp-cert" href="Certificates/LucyMentorshipCirtificate.pdf" target="_blank" rel="noopener">Certificate →</a>
+              <a class="exp-link" href="https://www.uts.edu.au/for-students/current-students/managing-your-course/current-students-information-engineering-and-information-technology/women-in-engineering-it" target="_blank" rel="noopener">Website →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-photo exp-slideshow" data-slideshow>
+            <img src="Images/PeerNetwork1.jpeg" alt="UTS Peer Network" class="slide active" />
+            <img src="Images/PeerNetwork2.jpeg" alt="UTS Peer Network" class="slide" loading="lazy" />
+            <img src="Images/PeerNetwork3.jpeg" alt="UTS Peer Network" class="slide" loading="lazy" />
+            <img src="Images/PeerNetwork4.jpeg" alt="UTS Peer Network" class="slide" loading="lazy" />
+            <button type="button" class="slide-arrow slide-arrow-prev" data-slide-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow slide-arrow-next" data-slide-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <div class="exp-body">
+            <h3>UTS Peer Network (Volunteer)</h3>
+            <div class="org">Student Experience Team, UTS</div>
+            <div class="when">Jan 2025 — Aug 2025</div>
+            <div class="exp-links">
+              <a class="exp-cert" href="#">Certificate →</a>
+              <a class="exp-link" href="https://www.uts.edu.au/for-students/current-students/support/opportunities/peer-network-program" target="_blank" rel="noopener">Website →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-photo exp-slideshow" data-slideshow>
+            <img src="Images/HikingClub1.jpeg" alt="UTS Hiking Club" class="slide active" />
+            <img src="Images/HikingClub2.jpeg" alt="UTS Hiking Club" class="slide" loading="lazy" />
+            <img src="Images/HikingClub3.jpeg" alt="UTS Hiking Club" class="slide" loading="lazy" />
+            <img src="Images/HikingClub4.jpeg" alt="UTS Hiking Club" class="slide" loading="lazy" />
+            <button type="button" class="slide-arrow slide-arrow-prev" data-slide-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow slide-arrow-next" data-slide-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <div class="exp-body">
+            <h3>UTS Hiking Club Executive Member</h3>
+            <div class="org">ActivateUTS Clubs, UTS</div>
+            <div class="when">Aug 2025 — Aug 2026</div>
+            <div class="exp-links">
+              <a class="exp-link" href="https://www.utshiking.club/" target="_blank" rel="noopener">Website →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <p>I'm actively applying for roles in tech and engineering - reach out if there's a fit, or just to have a conversation.</p>
+      <div class="contact-icons">
+        <a class="contact-icon" href="mailto:hani.pulimaddi@outlook.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+        </a>
+        <a class="contact-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© <span id="year"></span> Hanisha Pulimaddi Portfolio </footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="script.js?v=20260721"></script>
+</body>
+</html>

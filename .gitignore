@@ -1,0 +1,9 @@
+# Windows/WSL "downloaded from the internet" marker files
+*:Zone.Identifier
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editable resume source (not used by the site — resume.pdf is the served copy)
+Hanisha_Pulimaddi_CV.docx
