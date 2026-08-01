@@ -12,38 +12,40 @@
     document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
-<link rel="stylesheet" href="style.css?v=20260721" />
+<link rel="stylesheet" href="style.css?v=20260801ac" />
 </head>
 <body>
 
-<canvas id="dotField" aria-hidden="true"></canvas>
-
 <nav class="navbar" aria-label="Primary">
-  <a href="#home" class="nav-item active" data-section="home" aria-label="Home">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
-    <span class="nav-tooltip">Home</span>
-  </a>
-  <a href="#projects" class="nav-item" data-section="projects" aria-label="Projects">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4.5l2 2H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-    <span class="nav-tooltip">Projects</span>
-  </a>
-  <a href="#experience" class="nav-item" data-section="experience" aria-label="Leadership & Involvement">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M2.5 13h19"/></svg>
-    <span class="nav-tooltip">Involvement</span>
-  </a>
-  <a href="#contact" class="nav-item" data-section="contact" aria-label="Contact">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg>
-    <span class="nav-tooltip">Contact</span>
-  </a>
-  <a href="resume.pdf" class="nav-item" id="cvBtn" aria-label="View CV" aria-haspopup="dialog">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    <span class="nav-tooltip">CV</span>
-  </a>
-  <button type="button" class="nav-item" id="themeToggle" aria-label="Toggle light and dark theme" aria-pressed="false">
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-    <span class="nav-tooltip">Theme</span>
-  </button>
+  <div class="nav-brand">
+    <span class="nav-name">Hanisha Pulimaddi</span>
+  </div>
+
+  <div class="nav-menu">
+    <a href="#home" class="nav-link active" data-section="home">Home</a>
+    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+    <a href="#work" class="nav-link" data-section="work">Work</a>
+    <a href="#experience" class="nav-link" data-section="experience">Involvement</a>
+    <a href="#thoughts" class="nav-link" data-section="thoughts">Thoughts</a>
+    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+    <a href="resume.pdf" class="nav-link cv-trigger" aria-haspopup="dialog">CV</a>
+  </div>
+
+  <div class="nav-right">
+    <a href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" class="nav-icon-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+    </a>
+    <a href="https://github.com/HanishaPulimaddi" target="_blank" rel="noopener" class="nav-icon-link" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.05 3.29 9.33 7.85 10.84.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.19.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12.02C23.5 5.73 18.27.5 12 .5Z"/></svg>
+    </a>
+    <a href="mailto:hani.pulimaddi@outlook.com" class="nav-icon-link" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+    </a>
+    <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light and dark theme" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+    </button>
+  </div>
 </nav>
 
 <div class="cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV viewer" hidden>
@@ -68,12 +70,44 @@
   </div>
 </div>
 
+<div class="thought-modal" id="thoughtModal" role="dialog" aria-modal="true" aria-label="Article" hidden>
+  <div class="thought-modal-backdrop" data-thought-close></div>
+  <div class="thought-modal-panel">
+    <button type="button" class="thought-modal-close" data-thought-close aria-label="Close article">✕</button>
+    <div class="thought-modal-scroll">
+      <h3 id="thoughtModalTitle"></h3>
+      <div class="thought-modal-date" id="thoughtModalDate"></div>
+      <div class="thought-modal-body" id="thoughtModalBody"></div>
+    </div>
+  </div>
+</div>
+
 
 <main>
 
   <!-- ===================== HOME ===================== -->
   <section id="home">
     <div class="container">
+      <div class="hero-copy">
+        <h1 class="hero-headline">Building with curiosity. Exploring with intention.</h1>
+        <p class="hero-desc">I'm currently pursuing a Bachelor of Engineering (Honours) in Software Engineering at the University of Technology Sydney. I enjoy building technology that solves meaningful problems, but I'm equally passionate about understanding the people behind those problems. From startup experimentation and machine learning to community initiatives and personal challenges, I'm driven by curiosity, continuous learning, and thoughtful problem-solving. Recently, I've begun exploring electronics to broaden my understanding of how software and hardware come together.</p>
+        <p class="hero-desc">This portfolio is a collection of my projects, experiences, and reflections, capturing not only what I've built, but how I've grown along the way.</p>
+        <div class="hero-social">
+          <a class="hero-social-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+          </a>
+          <a class="hero-social-icon" href="mailto:hani.pulimaddi@outlook.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+          </a>
+          <a class="hero-social-icon" href="https://github.com/HanishaPulimaddi" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.05 3.29 9.33 7.85 10.84.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.19.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12.02C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          </a>
+          <a class="hero-social-icon cv-trigger" href="resume.pdf" aria-haspopup="dialog" aria-label="Resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </a>
+        </div>
+      </div>
+
       <div class="hero-card">
         <div class="hero-photo-flip" id="heroFlip" role="button" tabindex="0" aria-pressed="false" aria-label="Flip photo to reveal a quote">
           <div class="hero-photo-inner">
@@ -84,21 +118,40 @@
               </div>
             </div>
             <div class="hero-photo hero-photo-back" aria-hidden="true">
-              <p class="flip-quote"><span class="quote-mark">&ldquo;</span>Growing louder than my doubts!<span class="quote-mark">&rdquo;</span></p>
+              <svg class="flip-quote-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18Q32 8 58 18" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <rect x="2" y="10" width="10" height="16" rx="2" transform="rotate(-18 7 18)" stroke="#fff" stroke-width="2"/>
+                <rect x="52" y="10" width="10" height="16" rx="2" transform="rotate(18 57 18)" stroke="#fff" stroke-width="2"/>
+                <circle cx="4" cy="18" r="2" fill="#fff"/>
+                <circle cx="60" cy="18" r="2" fill="#fff"/>
+                <path d="M32,15C26,15 22,17 20,22C15,20 11,25 13,31C9,34 10,41 15,44C13,49 18,53 24,51C27,54 30,53 32,51C34,53 37,54 40,51C46,53 51,49 49,44C54,41 55,34 51,31C53,25 49,20 44,22C42,17 38,15 32,15Z" fill="#fff"/>
+                <path d="M32 18C29 25 35 32 32 39C29 44 35 47 32 51" stroke="#1c3f6e" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M19 27c3-2 6-2 9 0M18 37c3 2 6 2 9 0M36 27c3-2 6-2 9 0M37 37c3 2 6 2 9 0" stroke="#1c3f6e" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M26 51v6M38 51v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="26" cy="59" r="2" fill="#fff"/>
+                <circle cx="38" cy="59" r="2" fill="#fff"/>
+              </svg>
+              <p class="flip-quote">
+                <span class="quote-mark">&ldquo;</span>Growing<br>
+                louder<br>
+                than<br>
+                my<br>
+                doubts!<span class="quote-mark">&rdquo;</span>
+              </p>
             </div>
           </div>
         </div>
+        <div class="flip-hint" aria-hidden="true">
+          <span class="flip-hint-note">flip card!</span>
+          <svg class="flip-hint-arrow" viewBox="0 0 100 90" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M82 12C60 6 40 10 42 26C44 40 62 40 64 26C66 14 50 8 38 18C22 30 15 48 14 66"/>
+            <path d="M14 66 2 54"/>
+            <path d="M14 66 24 54"/>
+          </svg>
+        </div>
         <h3>Hanisha Pulimaddi</h3>
-        <p>3rd year student at University of Technology Sydney, currently persuing a Bachelor of Engineering Honors (Software Engineering).
-          Open to roles in backend, full-stack, data analytics and applied AI.
-          </p>
-      </div>
-
-      <div class="hero-copy">
-        <h1 class="hero-headline">
-          <span class="sr-only">Student, Aspiring Software Engineer, AI Enthusiast</span>
-          <span class="type-text" id="typeText" aria-hidden="true"></span><span class="type-cursor" aria-hidden="true"></span>
-        </h1>
+        <p class="hero-card-degree">Bachelor of Engineering Honours (Software) &middot; 2024 &ndash; Present</p>
+        <p class="hero-card-degree">Sydney, NSW</p>
       </div>
     </div>
   </section>
@@ -113,95 +166,144 @@
         </div>
       </div>
 
-      <div class="projects-grid reveal">
-        <article class="project-card">
-          <div class="project-thumb project-video-wrap" data-video-wrap>
-            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/BNPL.mp4" aria-label="BNPL Loan Default Prediction demo video"></video>
-            <div class="video-controls">
-              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
-                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-              </button>
-              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-              </button>
-            </div>
-          </div>
-          <div class="project-body">
-            <h3>BNPL Loan Default Prediction</h3>
-            <p>ML model predicting BNPL loan defaults using Logistic Regression and Random Forest, handling class imbalance.</p>
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">scikit-learn</span>
-              <span class="tag">Jupyter</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/HanishaPulimaddi/BNPL" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/HanishaPulimaddi/BNPL/blob/main/BNPL_Report.pdf" target="_blank" rel="noopener">Report →</a>
-            </div>
-          </div>
-        </article>
+      <div class="projects-carousel reveal">
+        <button type="button" class="projects-nav-btn projects-nav-prev" data-projects-prev aria-label="Previous projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="projects-viewport" data-projects-viewport>
+        <div class="projects-track">
 
-        <article class="project-card">
-          <div class="project-thumb project-video-wrap" data-video-wrap>
-            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/FridgeIQ.mp4" aria-label="FridgeIQ demo video"></video>
-            <div class="video-controls">
-              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
-                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-              </button>
-              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-              </button>
+        <div class="projects-page">
+          <article class="project-card">
+            <div class="project-thumb project-video-wrap" data-video-wrap>
+              <video class="project-video" muted loop playsinline preload="none" data-src="Videos/AutomatedComplianceChecker.mp4" aria-label="Automated Compliance Checker demo video"></video>
+              <div class="video-controls">
+                <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                  <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="project-body">
-            <h3>FridgeIQ - Smart Fridge Inventory (DLCNN)</h3>
-            <p>Full-stack app that detects food items from fridge photos with a custom YOLOv5 model, then generates priced grocery lists using live Coles/Woolworths/Aldi pricing.</p>
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">React</span>
-              <span class="tag">TypeScript</span>
+            <div class="project-body">
+              <h3>Automated Compliance Checker</h3>
+              <p>Automated compliance checking system for civil engineers and architects, built during the Arrayah Chapter 3 Residency startup accelerator program.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">React</span>
+                <span class="tag">Leaflet</span>
+                <span class="tag">Grasshopper/Rhino</span>
+                <span class="tag">LLM APIs</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/tree/dev" target="_blank" rel="noopener">Code →</a>
+                <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/blob/testing-branch/ProjectEvaluationReport.docx" target="_blank" rel="noopener">Report →</a>
+                <a href="https://automated-compliance-checker-liard.vercel.app/" target="_blank" rel="noopener">Live →</a>
+              </div>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ/blob/main/DLCNN_FridgeIQ_FinalReport.docx" target="_blank" rel="noopener">Report →</a>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="project-card">
-          <div class="project-thumb project-video-wrap" data-video-wrap>
-            <video class="project-video" muted loop playsinline preload="none" data-src="Videos/AutomatedComplianceChecker.mp4" aria-label="FridgeIQ demo video"></video>
-            <div class="video-controls">
-              <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
-                <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-              </button>
-              <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-              </button>
+          <article class="project-card">
+            <div class="project-thumb project-video-wrap" data-video-wrap>
+              <video class="project-video" muted loop playsinline preload="none" data-src="Videos/FridgeIQ.mp4" aria-label="FridgeIQ demo video"></video>
+              <div class="video-controls">
+                <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                  <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="project-body">
-            <h3>Automated Compliance Checker</h3>
-            <p>Automated compliance checking system for civil engineers and architects, built during the Arrayah Chapter 3 Residency startup accelerator program.</p>
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">React</span>
-              <span class="tag">Leaflet</span>
-              <span class="tag">Grasshopper/Rhino</span>
-              <span class="tag">LLM APIs</span>
+            <div class="project-body">
+              <h3>FridgeIQ - Smart Fridge Inventory (DLCNN)</h3>
+              <p>Full-stack app that detects food items from fridge photos with a custom YOLOv5 model, then generates priced grocery lists using live Coles/Woolworths/Aldi pricing.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ" target="_blank" rel="noopener">Code →</a>
+                <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ/blob/main/DLCNN_FridgeIQ_FinalReport.docx" target="_blank" rel="noopener">Report →</a>
+              </div>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/tree/testing-branch" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/blob/testing-branch/ProjectEvaluationReport.docx" target="_blank" rel="noopener">Report →</a>
+          </article>
+        </div>
+
+        <div class="projects-page">
+          <article class="project-card">
+            <div class="project-thumb project-video-wrap" data-video-wrap>
+              <video class="project-video" muted loop playsinline preload="none" data-src="Videos/BNPL.mp4" aria-label="BNPL Loan Default Prediction demo video"></video>
+              <div class="video-controls">
+                <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                  <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                </button>
+              </div>
             </div>
-          </div>
-        </article>
+            <div class="project-body">
+              <h3>BNPL Loan Default Prediction</h3>
+              <p>ML model predicting BNPL loan defaults using Logistic Regression and Random Forest, handling class imbalance.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Jupyter</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/HanishaPulimaddi/BNPL" target="_blank" rel="noopener">Code →</a>
+                <a href="https://github.com/HanishaPulimaddi/BNPL/blob/main/BNPL_Report.pdf" target="_blank" rel="noopener">Report →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        </div>
+        </div>
+        <button type="button" class="projects-nav-btn projects-nav-next" data-projects-next aria-label="Next projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORK ===================== -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Career</div>
+          <h2>Work Experience</h2>
+        </div>
+      </div>
+
+      <div class="work-timeline reveal">
+
+        <div class="work-item">
+          <div class="work-marker"></div>
+          <div class="work-when">Apr 2026 — July 2026</div>
+          <h3>Founder in Residence, Arrayah (Chapter 3 Residency)</h3>
+          <div class="work-org">Startup Accelerator Program Residency Cohort · Drummoyne, New South Wales</div>
+          <p class="work-desc">Served as the technical founder of an AI-powered compliance platform for architects while exploring startup building through customer discovery, product development, and pitching.</p>
+        </div>
+
+        <div class="work-item">
+          <div class="work-marker"></div>
+          <div class="work-when">Feb 2026 — Present</div>
+          <h3>UTS Library Student Guide</h3>
+          <div class="work-org">University of Technology Sydney</div>
+          <p class="work-desc">Supported day-to-day library operations while assisting students, maintaining resources, and fostering a welcoming learning environment.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -550,18 +652,151 @@
     </div>
   </section>
 
+  <!-- ===================== THOUGHTS ===================== -->
+  <section id="thoughts">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Writing</div>
+          <h2>Thoughts</h2>
+        </div>
+      </div>
+
+      <div class="thoughts-grid reveal">
+
+        <article class="thought-card">
+          <h3>Engineering Begins Before the First Line of Code</h3>
+          <div class="thought-date">9th January, 2026</div>
+          <p class="thought-excerpt">Most people imagine the role of a software engineer as simply coding a solution to a problem. But in reality, coding is just a fraction of what we do. Six months ago, a question kept resurfacing in my mind: "If AI is getting better at writing code, what becomes the engineer's real responsibility?"</p>
+          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
+          <template class="thought-full">
+            <p>Most people imagine the role of a software engineer as simply coding a solution to a problem. But in reality, coding is just a fraction of what we do. Six months ago, a question kept resurfacing in my mind: "If AI is getting better at writing code, what becomes the engineer's real responsibility?"</p>
+            <p>Artificial intelligence, more specifically generative and agentic AI, has rapidly transformed the software industry. Tools such as Claude, GPT, and Cursor have become part of developers' daily workflows. (DeBellis et al., 2025) AI has evolved at a remarkable pace, from the deep learning breakthrough of AlexNet in 2012 (Krizhevsky et al., 2012) to today's multimodal, agentic systems. The scale and speed of this progress are difficult to fully grasp, especially for students who are still building their technical foundations. Like many others, I questioned whether the role I saw myself pursuing would continue to exist. If AI could increasingly handle implementation, then where would software engineers continue to create value?</p>
+            <p>The answer became clearer during Arrayah, a startup accelerator program for bullish builders. My co-founder and I entered with what we believed was a strong idea: an automated compliance solution for architects. Initially, we believed the challenge was extracting compliance rules from lengthy, unstructured planning documents. However, after speaking with architects, we realised that extracting the rules was only one part of the problem. The real challenge was helping architects interpret those rules, identify opportunities and permissible design variations within them, and use that understanding to create smarter design plans. Those conversations challenged our assumptions and reshaped our understanding of the problem, ultimately changing the direction of our product. Rather than asking, "How do we build this?" we found ourselves repeatedly asking, "Have we correctly understood the problem we're trying to solve and how do we best solve it?" It's the difference between treating a symptom and diagnosing the disease. One provides temporary relief, the other solves the underlying problem. That shift fundamentally changed how I viewed software engineering.</p>
+            <p>Software engineering isn't just about writing code. It's about understanding problems well enough to know what should be built, why it should be built, and whether the solution actually creates value. This philosophy isn't unique to my experience. Amazon's Working Backwards approach begins by defining the customer problem and desired outcome before implementation. (Bryar &amp; Carr, 2021) The principle is simple: don't start building until you understand what your customers actually need. Similarly, Agile Scrum encourages teams to build incrementally, gather feedback, and continuously refine their solutions. It recognises that understanding evolves, and therefore software must evolve with it. (Schwaber &amp; Sutherland, 2020)</p>
+            <p>This made me realise something that AI has unintentionally highlighted. For years, many people, including myself, associated software engineering primarily with writing code. Today, AI is becoming increasingly capable of generating that code. But AI cannot determine whether we have correctly understood the problem. It cannot independently uncover user needs, challenge assumptions, balance technical and business trade-offs, or decide whether a solution creates genuine value. Those responsibilities still belong to engineers.</p>
+            <p>Rather than changing software engineering, AI is exposing what software engineering has always been. Coding has never been the end goal; it has always been the tool. The real value of a software engineer lies in asking better questions, understanding users, exercising sound judgement, and making decisions that technology alone cannot. AI will continue to make implementation faster, but I believe engineering judgement, the ability to determine what should be built, why it matters, and how it creates value, will continue to distinguish exceptional software engineers in the years ahead.</p>
+            <div class="thought-refs">
+              <span>Bryar, C., &amp; Carr, B. (2021). Working Backwards: Insights, Stories, and Secrets from Inside Amazon. St. Martin's Press.</span>
+              <span>DeBellis, D., Storer, K., Harvey, N., et al. (2025). DORA 2025 State of AI-assisted Software Development Report. Google Cloud DORA.</span>
+              <span>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks. Advances in Neural Information Processing Systems, 25, 1097-1105.</span>
+              <span>Schwaber, K., &amp; Sutherland, J. (2020). The Scrum Guide.</span>
+            </div>
+          </template>
+        </article>
+
+        <article class="thought-card">
+          <h3>The Black Box</h3>
+          <div class="thought-date">7th October, 2022</div>
+          <p class="thought-excerpt">A withering 8-inch black shoebox sits on the bottommost shelf of a white cupboard in a purple-walled room. Its lid screams "DO NOT TOUCH" and "BELONGS TO HANISHA" in a shaky red sparkle ink. Inside its weary cardboard skin rests my childhood memories.</p>
+          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
+          <template class="thought-full">
+            <p class="thought-note"><em>Author's Note: This piece was written during my final years of high school. I've chosen to preserve it as it was originally written because it reflects the person I was at that stage of my life and the experiences that shaped me.</em></p>
+            <p>A withering 8-inch black shoebox sits on the bottommost shelf of a white cupboard in a purple-walled room. Its lid screams "DO NOT TOUCH" and "BELONGS TO HANISHA" in a shaky red sparkle ink. Inside its weary cardboard skin rests my childhood memories. Since it is impossible to show a video recording of every second of my life, relive my defining moments through the items in this box.</p>
+            <p>Cross-legged, I sit on the floor with the box in my lap. As I reach my hands inside the box, the first thing I grab is a pink teacup, part of a complete kitchen set for kids. It takes me back to when I was five and was obsessed with make-believe cooking with my sisters. That was the first time I worked in a team. One sister would mix the mud with water, and the other would hunt the garden for flowers to decorate the chocolate cake while I shaped the cake with the muddy slurry. Together we would make the perfect dish, a taste of success!</p>
+            <p>Next, I pull out a yellow badge with a silver border and a roaring lion in the center with the word "Captain." It was shinier when it sat on the left side of my school shirt for three years—marking me out from the crowd as a student council member. The lengthy brainstorming sessions to choose songs or costumes for the music and dance competition, the late-night track editing, and the numerous discussions I had with management to get my team more rehearsal time were all factors that contributed to winning the competitions. In victory and loss, my team and I stood together.</p>
+            <p>The delegate handbook of SMISMUN, my school's Model United Nations, barely fits in the box. I worked in the secretariat for two years as Head of the Organizing Committee and Event Coordinator. I endured sleepless nights and meal-less days to expand my school's network by working with food trucks and DJs, organizing social nights, and opening and closing ceremonies. My communication skills developed in requesting over 500 delegates to participate in our MUN. I helped make content for our MUN's Instagram page. The number of delegate handbooks packed was countless, but staying back in school to complete these tasks with my peers and seniors made it all pass in a breeze.</p>
+            <p>The box then pushes out the polaroid of Right To A Good Bite's (RTAGB) first club meeting on 21st May 2020, bringing happy tears to my eyes. I started RTAGB at school to raise awareness about the relation of food and diet to mental and physical health. Over time, with increasing passionate club members, it became a safe space for conversations in school. Our internal discussions led to researched seminars, invited talks by health professionals, and creative plays on the issues for the entire school to attend. On our Instagram page, we posted parodies, posts, and reels on our monthly topics, such as eating disorders, organic farming, food adulteration, and "Covid: Food Myth-Busting."</p>
+            <p>The last item is a black journal with the faded minions' stickers. I opened the page containing a bucket list I made when I was eight. Amongst them, the already checked boxes read: getting a phone, a picnic at a waterpark, becoming a student council member, helping the community, and more. The remaining unchecked box read: being the first person in my family to study abroad, becoming a successful entrepreneur, developing innovative products, buying a house, and many other dreams which I am working to accomplish in my life. As I closed my eyes, I recalled my achievements and the hurdles I crossed to procure them. I became an improved person at every stage, making meaningful contributions to the team. Sometimes my leadership brought us closer to victory; other times, my backhanded support in the group made me appreciate the value of teamwork.</p>
+          </template>
+        </article>
+
+        <article class="thought-card">
+          <h3>The Stories of the Mountain</h3>
+          <div class="thought-date">18th November, 2025</div>
+          <p class="thought-excerpt">"I can't do this anymore!" I stopped. I sat down on the side of the mountain and gave up. I've always loved walking through nature. There's something calming about towering trees, mountains disappearing into the clouds, and standing in freezing streams under a sky full of stars.</p>
+          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
+          <template class="thought-full">
+            <p>"I can't do this anymore!" I stopped. I sat down on the side of the mountain and gave up.</p>
+            <p>I've always loved walking through nature. There's something calming about towering trees, mountains disappearing into the clouds, and standing in freezing streams under a sky full of stars. So, when the UTS Hiking Club announced an overnight hike to Acacia Flat in the Blue Mountains, my friend and I didn't think twice.</p>
+            <p>As we began the trail, everyone was laughing, singing, and making up songs to remember the weekend. The hike leader smiled and joked, "I like how optimistic you all are. I hope you stay the same by the time this hike is over." The hike hadn't even officially begun when the group decided to make things "a little more interesting." Instead of heading straight towards the campground, we took a detour around the Grand Canyon Track, a casual three-hour addition.</p>
+            <p>Three hours later, after climbing over rocks, stepping through puddles, squeezing between bushes, the official trail was only just beginning. As the group started to descend into the valley, so did my will to live. The first few hours felt manageable. We laughed, took photos, and convinced ourselves we were making great progress. By the fifth hour, we had taken countless breaks, emptied more water bottles than I could count, and the campground was still nowhere in sight.</p>
+            <p>Someone called out from behind us. "Girls, your pace is slow. At this rate, we'll take another hour." I was petrified. I picked up my pace. Looking back, I don't think they were discouraging us, they were simply stating facts. But my mind had to make up its own story. The sun began to set and we hiked in the dark. Armed with a phone flashlight instead of a headlamp, shoes whose soles had long given up, and a wooden stick proudly pretending to be a hiking pole. The boys kept encouraging us. "Just twenty more minutes." After hearing it for hours, those words stopped sounding like encouragement and started sounding like false hope.</p>
+            <p>Nine hours after we had started, we finally reached the campground. That relief lasted less than a minute. There was no network and the last message I had sent my mum read, "I'll message you when I reach the campground." I was worried that I have stressed my family. This deeply made me realise the things I have taken for granted and what I still have to be grateful for.</p>
+            <p>The next morning, we woke up with a little more hope than energy. This time, the goal wasn't just to finish the hike. We wanted to reach somewhere with a network and let our families know we were okay. For a while, that was enough to keep us moving. The painkillers I had taken the night before slowly wore off and I was in pain. Somewhere between trying to catch my breath and convincing myself to keep walking, our group split into two. My friend ended up in the group ahead. I stayed behind. "Did we lose the track?" "What if she isn't okay?" "What if we don't end up back together?" By the time we reunited, I didn't even say anything. I just hugged her.</p>
+            <p>Strange, how I had always believed resilience meant doing hard things on your own. Somewhere on that mountain, I realised that resilience is allowing others to carry part of your weight until you remember how to carry yourself again.</p>
+            <p>Five hours into the hike, somewhere in the middle of the mountains with barely enough space for one person to stand, I stopped. I sat down. I looked at the group and quietly said, "You guys go ahead. I'm done." For the first time in my life, I genuinely believed I had reached my limit. I looked up at the clouds and whispered the only thing I could think of. "Please... just let this end. I can't do this anymore." My friends stayed with me without saying much, just being there in silence. In that moment I realised it wasn't my body that had given up, but my mind that had convinced me I couldn't go on.</p>
+            <p>Moments later I got up. Eventually, we reached Victoria Falls. My friend grabbed my hand and together we yelled, "Carpe Diem!" For the first time that weekend, I wasn't thinking about how much further we had to go. I was simply grateful to have made it that far.</p>
+            <p>The hike leader smiled and pointed towards the final stretch. "Just another 600 metres." After everything we had already climbed, six hundred metres somehow sounded both comforting and terrifying. The final climb was nothing but an endless staircase. My body still hurts. My legs were still screaming at me to stop. The mountain hadn't suddenly become easier. But something else had changed.</p>
+            <p>The stories in my head had. Instead of asking, "Can I make it?" I found myself asking, "What's the next step?" Somewhere between those two questions, everything changed. The long hike ended and we finally reached. Our reward, a dreamy view of the milky way. It was divine.</p>
+            <p>Ironically, nothing about me had changed physically. I wasn't fitter. I wasn't stronger. Yet somehow, I walked away feeling different. Looking back, I don't think the biggest lesson from that hike was resilience. It was learning that giving up isn't always the end of the story. We spend so much of our lives believing the stories our minds create. "I'm not enough, I'm slowing everyone down, I can't do this." Sometimes those stories prepare us, but sometimes they're simply wrong. The mountain never told me to stop; my mind did. I gave up. I sat down, convinced I had nothing left to give. Yet, because of the kindness of those who stayed beside me and the quiet decision to take one more step, I stood up again. For that, I'll always be grateful. That hike reminded me that strength isn't about never reaching your breaking point. It's about finding the courage to get back up, even when you've already convinced yourself you can't.</p>
+          </template>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="container reveal">
-      <div class="eyebrow">Get In Touch</div>
-      <p>I'm actively applying for roles in tech and engineering - reach out if there's a fit, or just to have a conversation.</p>
-      <div class="contact-icons">
-        <a class="contact-icon" href="mailto:hani.pulimaddi@outlook.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
-        </a>
-        <a class="contact-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
-        </a>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Let's Connect</div>
+          <h2>Get in Touch</h2>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Weather you want to <span class="highlight">build</span> something, have a <span class="highlight">unique idea</span> or or just have a <span class="highlight">simple conversation</span>, reach out to me.</p>
+          <p>I'm actively applying for roles in tech and engineering in Sydney, Australia - reach out if there's a fit, or just to have a conversation.</p>
+
+          <div class="contact-links">
+            <a class="contact-row" href="mailto:hani.pulimaddi@outlook.com">
+              <span class="contact-row-label">
+                <svg class="contact-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+                Email
+              </span>
+              <svg class="contact-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a class="contact-row" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener">
+              <span class="contact-row-label">
+                <svg class="contact-row-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+                LinkedIn
+              </span>
+              <svg class="contact-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a class="contact-row" href="https://github.com/HanishaPulimaddi" target="_blank" rel="noopener">
+              <span class="contact-row-label">
+                <svg class="contact-row-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.05 3.29 9.33 7.85 10.84.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.19.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12.02C23.5 5.73 18.27.5 12 .5Z"/></svg>
+                GitHub
+              </span>
+              <svg class="contact-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a class="contact-row cv-trigger" href="resume.pdf" aria-haspopup="dialog">
+              <span class="contact-row-label">
+                <svg class="contact-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Resume
+              </span>
+              <svg class="contact-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label for="cName">Name</label>
+              <input type="text" id="cName" name="name" placeholder="Your name" autocomplete="name" required />
+            </div>
+            <div class="contact-field">
+              <label for="cEmail">Email</label>
+              <input type="email" id="cEmail" name="email" placeholder="your@email.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="contact-field">
+            <label for="cSubject">Subject</label>
+            <input type="text" id="cSubject" name="subject" placeholder="What's this about?" />
+          </div>
+          <div class="contact-field">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" rows="5" placeholder="Tell me about the opportunity or idea…" required></textarea>
+          </div>
+          <div class="contact-form-footer">
+            <button type="submit" class="contact-submit">Send Message →</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -571,6 +806,6 @@
 <footer>© <span id="year"></span> Hanisha Pulimaddi Portfolio </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script src="script.js?v=20260721"></script>
+<script src="script.js?v=20260801p"></script>
 </body>
 </html>

@@ -5,7 +5,6 @@ if (themeToggle) {
   const applyTheme = (theme) => {
     root.setAttribute('data-theme', theme);
     themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
-    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
   };
   applyTheme(root.getAttribute('data-theme') || 'light');
   themeToggle.addEventListener('click', () => {
@@ -17,7 +16,7 @@ if (themeToggle) {
 
 // Active nav state driven by which section is centered in the viewport.
 const sections = document.querySelectorAll('main section[id]');
-const navItems = document.querySelectorAll('.nav-item');
+const navItems = document.querySelectorAll('.nav-link[data-section]');
 const navBySection = {};
 navItems.forEach((item) => { navBySection[item.dataset.section] = item; });
 
@@ -38,112 +37,6 @@ if ('IntersectionObserver' in window) {
   sections.forEach((section) => observer.observe(section));
 }
 
-// Interactive dot-grid background — dots drift away from the cursor and
-// warm toward the accent color the closer it gets, then ease back to rest.
-const dotCanvas = document.getElementById('dotField');
-if (dotCanvas) {
-  const ctx = dotCanvas.getContext('2d');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const spacing = 26;
-  const baseRadius = 1.1;
-  const baseAlpha = 0.09;
-  const influenceRadius = 140;
-  const maxPush = 10;
-
-  let dots = [];
-  let width = 0;
-  let height = 0;
-  const mouse = { x: -9999, y: -9999 };
-  let dotRGB = getComputedStyle(document.documentElement).getPropertyValue('--dot-rgb').trim() || '34,49,66';
-  document.addEventListener('themechange', () => {
-    dotRGB = getComputedStyle(document.documentElement).getPropertyValue('--dot-rgb').trim() || dotRGB;
-    if (reduceMotion) drawStatic();
-  });
-
-  function buildDots() {
-    dots = [];
-    for (let y = spacing / 2; y < height; y += spacing) {
-      for (let x = spacing / 2; x < width; x += spacing) {
-        dots.push({ ox: x, oy: y, x, y });
-      }
-    }
-  }
-
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    dotCanvas.width = width * dpr;
-    dotCanvas.height = height * dpr;
-    dotCanvas.style.width = width + 'px';
-    dotCanvas.style.height = height + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    buildDots();
-  }
-
-  function drawStatic() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = `rgba(${dotRGB},${baseAlpha})`;
-    for (const d of dots) {
-      ctx.beginPath();
-      ctx.arc(d.ox, d.oy, baseRadius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  if (reduceMotion) {
-    resize();
-    drawStatic();
-    window.addEventListener('resize', () => { resize(); drawStatic(); });
-  } else {
-    const onMove = (x, y) => { mouse.x = x; mouse.y = y; };
-    window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY), { passive: true });
-    window.addEventListener('mouseleave', () => onMove(-9999, -9999));
-    window.addEventListener('touchmove', (e) => {
-      const t = e.touches[0];
-      if (t) onMove(t.clientX, t.clientY);
-    }, { passive: true });
-    window.addEventListener('touchend', () => onMove(-9999, -9999));
-    window.addEventListener('resize', resize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, width, height);
-      for (const d of dots) {
-        const dx = d.ox - mouse.x;
-        const dy = d.oy - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        let targetX = d.ox;
-        let targetY = d.oy;
-        let radius = baseRadius;
-        let alpha = baseAlpha;
-        let near = false;
-
-        if (dist < influenceRadius) {
-          near = true;
-          const force = 1 - dist / influenceRadius;
-          const angle = Math.atan2(dy, dx);
-          targetX = d.ox + Math.cos(angle) * force * maxPush;
-          targetY = d.oy + Math.sin(angle) * force * maxPush;
-          radius = baseRadius + force * 1.6;
-          alpha = baseAlpha + force * 0.55;
-        }
-
-        d.x += (targetX - d.x) * 0.18;
-        d.y += (targetY - d.y) * 0.18;
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = near ? `rgba(217,80,44,${alpha})` : `rgba(${dotRGB},${alpha})`;
-        ctx.fill();
-      }
-      requestAnimationFrame(draw);
-    };
-
-    resize();
-    draw();
-  }
-}
-
 // Photo card flip.
 const heroFlip = document.getElementById('heroFlip');
 if (heroFlip) {
@@ -160,66 +53,24 @@ if (heroFlip) {
   });
 }
 
-// Hero headline typewriter — types, pauses, deletes, moves to the next word.
-const typeEl = document.getElementById('typeText');
-if (typeEl) {
-  const words = ['Student', 'Aspiring Software Engineer', 'AI Enthusiast'];
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (reduceMotion) {
-    typeEl.textContent = words.join(' · ');
-  } else {
-    const typeSpeed = 55;
-    const deleteSpeed = 30;
-    const holdTime = 1400;
-    const gapTime = 400;
-    let wordIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    const tick = () => {
-      const current = words[wordIndex];
-      if (!deleting) {
-        charIndex++;
-        typeEl.textContent = current.slice(0, charIndex);
-        if (charIndex === current.length) {
-          deleting = true;
-          setTimeout(tick, holdTime);
-          return;
-        }
-        setTimeout(tick, typeSpeed);
-      } else {
-        charIndex--;
-        typeEl.textContent = current.slice(0, charIndex);
-        if (charIndex === 0) {
-          deleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(tick, gapTime);
-          return;
-        }
-        setTimeout(tick, deleteSpeed);
-      }
-    };
-    tick();
-  }
-}
-
 // CV modal — opens the PDF in an in-page viewer instead of navigating away.
-const cvBtn = document.getElementById('cvBtn');
+// Multiple triggers (nav "CV" link, contact "Resume" row) share one modal.
+const cvTriggers = document.querySelectorAll('.cv-trigger');
 const cvModal = document.getElementById('cvModal');
-if (cvBtn && cvModal) {
+if (cvTriggers.length && cvModal) {
   const cvFrame = document.getElementById('cvFrame');
   const cvDownload = cvModal.querySelector('.cv-modal-download');
   let lastFocused = null;
 
   // Cache-bust so a replaced resume.pdf shows up immediately instead of a stale cached copy.
   const cvCacheBuster = `?v=${Date.now()}`;
-  if (cvDownload) cvDownload.href = cvBtn.getAttribute('href') + cvCacheBuster;
+  const cvHref = cvTriggers[0].getAttribute('href') + cvCacheBuster;
+  if (cvDownload) cvDownload.href = cvHref;
 
   const openCv = (event) => {
     event.preventDefault();
     lastFocused = document.activeElement;
-    cvFrame.src = cvBtn.getAttribute('href') + cvCacheBuster;
+    cvFrame.src = cvHref;
     cvModal.hidden = false;
     document.body.style.overflow = 'hidden';
     cvModal.querySelector('.cv-modal-close').focus();
@@ -231,10 +82,48 @@ if (cvBtn && cvModal) {
     lastFocused?.focus();
   };
 
-  cvBtn.addEventListener('click', openCv);
+  cvTriggers.forEach((btn) => btn.addEventListener('click', openCv));
   cvModal.querySelectorAll('[data-cv-close]').forEach((el) => el.addEventListener('click', closeCv));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !cvModal.hidden) closeCv();
+  });
+}
+
+// Projects carousel — prev/next buttons page the viewport by one screenful,
+// showing two project cards at a time.
+const projectsViewport = document.querySelector('[data-projects-viewport]');
+const projectsPrev = document.querySelector('[data-projects-prev]');
+const projectsNext = document.querySelector('[data-projects-next]');
+if (projectsViewport && projectsPrev && projectsNext) {
+  const updateProjectsNav = () => {
+    const maxScroll = projectsViewport.scrollWidth - projectsViewport.clientWidth;
+    projectsPrev.disabled = projectsViewport.scrollLeft <= 4;
+    projectsNext.disabled = projectsViewport.scrollLeft >= maxScroll - 4;
+  };
+  projectsPrev.addEventListener('click', () => {
+    projectsViewport.scrollBy({ left: -projectsViewport.clientWidth, behavior: 'smooth' });
+  });
+  projectsNext.addEventListener('click', () => {
+    projectsViewport.scrollBy({ left: projectsViewport.clientWidth, behavior: 'smooth' });
+  });
+  projectsViewport.addEventListener('scroll', updateProjectsNav, { passive: true });
+  window.addEventListener('resize', updateProjectsNav);
+  updateProjectsNav();
+}
+
+// Contact form — no backend, so it hands the message off to the visitor's
+// mail client via a pre-filled mailto: link.
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = contactForm.name.value.trim();
+    const email = contactForm.email.value.trim();
+    const subject = contactForm.subject.value.trim() || `Portfolio contact from ${name}`;
+    const message = contactForm.message.value.trim();
+    const body = `${message}\n\n— ${name} (${email})`;
+    window.location.href =
+      `mailto:hani.pulimaddi@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
@@ -352,6 +241,45 @@ if (projectVideoWraps.length) {
       videoModalPlayer.play().catch(() => {});
       videoModal.querySelector('.video-modal-close').focus();
     });
+  });
+}
+
+// Thoughts modal — "Read fully" expands an article card into the full
+// write-up, styled like the rest of the site rather than an embedded PDF.
+const thoughtCards = document.querySelectorAll('.thought-card');
+const thoughtModal = document.getElementById('thoughtModal');
+if (thoughtCards.length && thoughtModal) {
+  const thoughtModalTitle = document.getElementById('thoughtModalTitle');
+  const thoughtModalDate = document.getElementById('thoughtModalDate');
+  const thoughtModalBody = document.getElementById('thoughtModalBody');
+  const thoughtModalScroll = thoughtModal.querySelector('.thought-modal-scroll');
+  let lastFocusedThought = null;
+
+  const openThought = (card) => {
+    const template = card.querySelector('template.thought-full');
+    if (!template) return;
+    lastFocusedThought = document.activeElement;
+    thoughtModalTitle.textContent = card.querySelector('h3').textContent;
+    thoughtModalDate.textContent = card.querySelector('.thought-date').textContent;
+    thoughtModalBody.replaceChildren(template.content.cloneNode(true));
+    thoughtModalScroll.scrollTop = 0;
+    thoughtModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    thoughtModal.querySelector('.thought-modal-close').focus();
+  };
+
+  const closeThought = () => {
+    thoughtModal.hidden = true;
+    document.body.style.overflow = '';
+    lastFocusedThought?.focus();
+  };
+
+  thoughtCards.forEach((card) => {
+    card.querySelector('[data-thought-open]')?.addEventListener('click', () => openThought(card));
+  });
+  thoughtModal.querySelectorAll('[data-thought-close]').forEach((el) => el.addEventListener('click', closeThought));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !thoughtModal.hidden) closeThought();
   });
 }
 
