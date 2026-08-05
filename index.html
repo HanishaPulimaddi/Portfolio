@@ -82,6 +82,19 @@
   </div>
 </div>
 
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details" hidden>
+  <div class="project-modal-backdrop" data-project-close></div>
+  <div class="project-modal-panel">
+    <button type="button" class="project-modal-close" data-project-close aria-label="Close project details">✕</button>
+    <div class="project-modal-scroll">
+      <h3 id="projectModalTitle"></h3>
+      <div class="tag-row" id="projectModalTags"></div>
+      <div class="project-links" id="projectModalLinks"></div>
+      <div class="project-modal-columns" id="projectModalBody"></div>
+    </div>
+  </div>
+</div>
+
 
 <main>
 
@@ -90,7 +103,7 @@
     <div class="container">
       <div class="hero-copy">
         <h1 class="hero-headline">Building with curiosity. Exploring with intention.</h1>
-        <p class="hero-desc">I'm currently pursuing a Bachelor of Engineering (Honours) in Software Engineering at the University of Technology Sydney. I enjoy building technology that solves meaningful problems, but I'm equally passionate about understanding the people behind those problems. From startup experimentation and machine learning to community initiatives and personal challenges, I'm driven by curiosity, continuous learning, and thoughtful problem-solving. Recently, I've begun exploring electronics to broaden my understanding of how software and hardware come together.</p>
+        <p class="hero-desc">I'm currently pursuing a Bachelor of Engineering (Honours) in Software Engineering at the University of Technology Sydney. I enjoy building technology that solves meaningful problems, but I'm equally passionate about understanding the people behind those problems. From startup experimentation to community initiatives, I'm driven by curiosity, continuous learning, and thoughtful problem-solving. Recently, I've begun exploring electronics to broaden my understanding of how software and hardware come together.</p>
         <p class="hero-desc">This portfolio is a collection of my projects, experiences, and reflections, capturing not only what I've built, but how I've grown along the way.</p>
         <div class="hero-social">
           <a class="hero-social-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -187,7 +200,7 @@
                 </button>
               </div>
             </div>
-            <div class="project-body">
+            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: Automated Compliance Checker">
               <h3>Automated Compliance Checker</h3>
               <p>Automated compliance checking system for civil engineers and architects, built during the Arrayah Chapter 3 Residency startup accelerator program.</p>
               <div class="tag-row">
@@ -203,6 +216,48 @@
                 <a href="https://github.com/HanishaPulimaddi/AutomatedComplianceChecker/blob/testing-branch/ProjectEvaluationReport.docx" target="_blank" rel="noopener">Report →</a>
                 <a href="https://automated-compliance-checker-liard.vercel.app/" target="_blank" rel="noopener">Live →</a>
               </div>
+              <div class="project-details-hint">View case study →</div>
+              <template class="project-full">
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <h4>Problem</h4>
+                  </div>
+                  <ul>
+                    <li>Council rules (DCP/LEP/SEPP) are scattered across long, unstructured PDFs</li>
+                    <li>Finding the clause that applies to one specific address is slow and manual</li>
+                    <li>Cross-referencing setbacks, height, and floor space rules takes real expertise</li>
+                    <li>Existing tools don't link answers back to a source, so they're hard to trust</li>
+                    <li>No fast way to screen a lot's opportunities before commissioning a full survey</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.5 2 4.5.6.7 1 1.3 1 2.5h6c0-1.2.4-1.8 1-2.5.8-1 2-2.3 2-4.5a6 6 0 0 0-6-6z"/></svg>
+                    <h4>Solution</h4>
+                  </div>
+                  <ul>
+                    <li>Resolves a Canada Bay address to its lot polygon and zone via NSW Planning APIs</li>
+                    <li>Computes the buildable envelope (setbacks, height, floor space) from extracted rules</li>
+                    <li>Cites every value back to its source DCP/LEP/SEPP clause and PDF page</li>
+                    <li>Screens CDC eligibility and Housing SEPP 2021 LMR reform eligibility</li>
+                    <li>Pairs a React + Leaflet map UI with a Grasshopper/Rhino plugin for 3D massing</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+                    <h4>Learnings</h4>
+                  </div>
+                  <ul>
+                    <li>Scoping aggressively (dropping a second council) mattered more than covering more ground</li>
+                    <li>Regulatory answers need traceable citations, not just a plausible-looking number</li>
+                    <li>Talking to real architects reshaped the product from rule extraction to rule interpretation</li>
+                    <li>Automated edge detection breaks on unusual lot shapes — a warning beats a silent guess</li>
+                    <li>Coordinating geometry, LLM extraction, and mapping into one working full-stack product</li>
+                  </ul>
+                </div>
+              </template>
             </div>
           </article>
 
@@ -219,7 +274,7 @@
                 </button>
               </div>
             </div>
-            <div class="project-body">
+            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: FridgeIQ">
               <h3>FridgeIQ - Smart Fridge Inventory (DLCNN)</h3>
               <p>Full-stack app that detects food items from fridge photos with a custom YOLOv5 model, then generates priced grocery lists using live Coles/Woolworths/Aldi pricing.</p>
               <div class="tag-row">
@@ -233,6 +288,46 @@
                 <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ" target="_blank" rel="noopener">Code →</a>
                 <a href="https://github.com/HanishaPulimaddi/DLCNN-FridgeIQ/blob/main/DLCNN_FridgeIQ_FinalReport.docx" target="_blank" rel="noopener">Report →</a>
               </div>
+              <div class="project-details-hint">View case study →</div>
+              <template class="project-full">
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <h4>Problem</h4>
+                  </div>
+                  <ul>
+                    <li>Hard to keep track of what's actually in the fridge day to day</li>
+                    <li>Leads to over-buying items already on hand and staples running out unnoticed</li>
+                    <li>Manually pricing missing items across multiple supermarkets is tedious</li>
+                    <li>No easy bridge between "what I have," "what I need," and what it costs</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.5 2 4.5.6.7 1 1.3 1 2.5h6c0-1.2.4-1.8 1-2.5.8-1 2-2.3 2-4.5a6 6 0 0 0-6-6z"/></svg>
+                    <h4>Solution</h4>
+                  </div>
+                  <ul>
+                    <li>User photographs their fridge; a custom-trained YOLOv5 model detects food items</li>
+                    <li>Detections are enriched with Coles/Woolworths/Aldi price data</li>
+                    <li>Missing staples are flagged and turned into a priced grocery list in one flow</li>
+                    <li>JWT-authenticated FastAPI backend persists scan history and lists per user</li>
+                    <li>React dashboard covers scanning, lists, analytics, and profile management</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+                    <h4>Learnings</h4>
+                  </div>
+                  <ul>
+                    <li>Trained and fine-tuned a custom object detector for a narrow domain end to end</li>
+                    <li>Learned to design the product (auth, persistence, lists) around the ML feature, not just the model</li>
+                    <li>Integrating three different, messy real-world pricing sources into one feature</li>
+                    <li>Built a capture-to-list flow that stays useful for the user after the first scan</li>
+                  </ul>
+                </div>
+              </template>
             </div>
           </article>
         </div>
@@ -251,7 +346,7 @@
                 </button>
               </div>
             </div>
-            <div class="project-body">
+            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: BNPL Loan Default Prediction">
               <h3>BNPL Loan Default Prediction</h3>
               <p>ML model predicting BNPL loan defaults using Logistic Regression and Random Forest, handling class imbalance.</p>
               <div class="tag-row">
@@ -263,6 +358,45 @@
                 <a href="https://github.com/HanishaPulimaddi/BNPL" target="_blank" rel="noopener">Code →</a>
                 <a href="https://github.com/HanishaPulimaddi/BNPL/blob/main/BNPL_Report.pdf" target="_blank" rel="noopener">Report →</a>
               </div>
+              <div class="project-details-hint">View case study →</div>
+              <template class="project-full">
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <h4>Problem</h4>
+                  </div>
+                  <ul>
+                    <li>BNPL lenders need to flag likely loan defaults before they happen</li>
+                    <li>Default events are rare relative to on-time repayments (class imbalance)</li>
+                    <li>A naive model can score well by just predicting "no default" every time</li>
+                    <li>Missed defaults and false alarms carry very different costs for a lender</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.5 2 4.5.6.7 1 1.3 1 2.5h6c0-1.2.4-1.8 1-2.5.8-1 2-2.3 2-4.5a6 6 0 0 0-6-6z"/></svg>
+                    <h4>Solution</h4>
+                  </div>
+                  <ul>
+                    <li>Built and compared Logistic Regression and Random Forest classifiers</li>
+                    <li>Applied class-imbalance handling during training so the model doesn't just learn the majority class</li>
+                    <li>Evaluated models on metrics beyond raw accuracy to judge real predictive value</li>
+                    <li>Iterated on features and preprocessing in a Jupyter notebook workflow</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+                    <h4>Learnings</h4>
+                  </div>
+                  <ul>
+                    <li>Why accuracy alone is misleading on imbalanced classification problems</li>
+                    <li>How class-imbalance techniques change what "a good model" actually looks like</li>
+                    <li>Trade-offs between an interpretable model (Logistic Regression) and a flexible one (Random Forest)</li>
+                    <li>The value of comparing multiple model families before settling on one</li>
+                  </ul>
+                </div>
+              </template>
             </div>
           </article>
         </div>

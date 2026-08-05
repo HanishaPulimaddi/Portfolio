@@ -283,6 +283,57 @@ if (thoughtCards.length && thoughtModal) {
   });
 }
 
+// Project modal — clicking a project card's content (outside its links)
+// expands it into a dialog with the problem, solution, and learnings.
+const projectBodies = document.querySelectorAll('[data-project-open]');
+const projectModal = document.getElementById('projectModal');
+if (projectBodies.length && projectModal) {
+  const projectModalTitle = document.getElementById('projectModalTitle');
+  const projectModalTags = document.getElementById('projectModalTags');
+  const projectModalLinks = document.getElementById('projectModalLinks');
+  const projectModalBody = document.getElementById('projectModalBody');
+  const projectModalScroll = projectModal.querySelector('.project-modal-scroll');
+  let lastFocusedProject = null;
+
+  const openProject = (body) => {
+    const template = body.querySelector('template.project-full');
+    if (!template) return;
+    lastFocusedProject = document.activeElement;
+    projectModalTitle.textContent = body.querySelector('h3').textContent;
+    projectModalTags.replaceChildren(...body.querySelector('.tag-row').cloneNode(true).childNodes);
+    projectModalLinks.replaceChildren(...body.querySelector('.project-links').cloneNode(true).childNodes);
+    projectModalBody.replaceChildren(template.content.cloneNode(true));
+    projectModalScroll.scrollTop = 0;
+    projectModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    projectModal.querySelector('.project-modal-close').focus();
+  };
+
+  const closeProject = () => {
+    projectModal.hidden = true;
+    document.body.style.overflow = '';
+    lastFocusedProject?.focus();
+  };
+
+  projectBodies.forEach((body) => {
+    body.addEventListener('click', (event) => {
+      if (event.target.closest('a')) return;
+      openProject(body);
+    });
+    body.addEventListener('keydown', (event) => {
+      if (event.target.closest('a')) return;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProject(body);
+      }
+    });
+  });
+  projectModal.querySelectorAll('[data-project-close]').forEach((el) => el.addEventListener('click', closeProject));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !projectModal.hidden) closeProject();
+  });
+}
+
 // Scroll-reveal for section content blocks.
 const revealTargets = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealTargets.length) {
