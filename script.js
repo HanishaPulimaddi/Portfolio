@@ -299,7 +299,9 @@ if (projectBodies.length && projectModal) {
     const template = body.querySelector('template.project-full');
     if (!template) return;
     lastFocusedProject = document.activeElement;
-    projectModalTitle.textContent = body.querySelector('h3').textContent;
+    const titleEl = body.querySelector('h3').cloneNode(true);
+    titleEl.querySelector('.project-status-tag')?.remove();
+    projectModalTitle.textContent = titleEl.textContent.trim();
     projectModalTags.replaceChildren(...body.querySelector('.tag-row').cloneNode(true).childNodes);
     projectModalLinks.replaceChildren(...body.querySelector('.project-links').cloneNode(true).childNodes);
     projectModalBody.replaceChildren(template.content.cloneNode(true));
