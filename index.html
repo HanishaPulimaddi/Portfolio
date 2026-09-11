@@ -12,7 +12,7 @@
     document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
-<link rel="stylesheet" href="style.css?v=20260801ac" />
+<link rel="stylesheet" href="style.css?v=20260902l" />
 </head>
 <body>
 
@@ -26,7 +26,7 @@
     <a href="#projects" class="nav-link" data-section="projects">Projects</a>
     <a href="#work" class="nav-link" data-section="work">Work</a>
     <a href="#experience" class="nav-link" data-section="experience">Involvement</a>
-    <a href="#thoughts" class="nav-link" data-section="thoughts">Thoughts</a>
+    <a href="thoughts.html" class="nav-link" data-section="thoughts">Thoughts</a>
     <a href="#contact" class="nav-link" data-section="contact">Contact</a>
     <a href="resume.pdf" class="nav-link cv-trigger" aria-haspopup="dialog">CV</a>
   </div>
@@ -70,18 +70,6 @@
   </div>
 </div>
 
-<div class="thought-modal" id="thoughtModal" role="dialog" aria-modal="true" aria-label="Article" hidden>
-  <div class="thought-modal-backdrop" data-thought-close></div>
-  <div class="thought-modal-panel">
-    <button type="button" class="thought-modal-close" data-thought-close aria-label="Close article">✕</button>
-    <div class="thought-modal-scroll">
-      <h3 id="thoughtModalTitle"></h3>
-      <div class="thought-modal-date" id="thoughtModalDate"></div>
-      <div class="thought-modal-body" id="thoughtModalBody"></div>
-    </div>
-  </div>
-</div>
-
 <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details" hidden>
   <div class="project-modal-backdrop" data-project-close></div>
   <div class="project-modal-panel">
@@ -103,7 +91,7 @@
     <div class="container">
       <div class="hero-copy">
         <h1 class="hero-headline">Building with curiosity. Exploring with intention.</h1>
-        <p class="hero-desc">I enjoy building technology that solves meaningful problems, but I'm equally passionate about understanding the people behind those problems. From startup experimentation to community initiatives, I'm driven by curiosity, continuous learning, and thoughtful problem-solving. Recently, I've begun exploring electronics to broaden my understanding of how software and hardware come together.</p>
+        <p class="hero-desc">I enjoy building technology that solves meaningful problems, but I'm equally passionate about understanding the people behind those problems. From startup experimentation to community initiatives, I'm driven by curiosity, continuous learning, and thoughtful problem-solving. 
         <p class="hero-desc">This portfolio is a collection of my projects, experiences, and reflections, capturing not only what I've built, but how I've grown along the way.</p>
         <div class="hero-social">
           <a class="hero-social-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -399,19 +387,90 @@
           </article>
         </div>
 
+        
+
         <div class="projects-page">
+          <article class="project-card">
+            <div class="project-thumb">
+              <span class="glyph">WayFind</span>
+            </div>
+            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: WayFind">
+              <h3>WayFind: Crisis Centre Referral Tool</h3>
+              <p>A referral tool for caseworkers at Lou's Place, a women's crisis centre in Redfern. It checks services at the moment of use and rebuilds its own directory from a 15-second voice note after each call. Built in a two-day no-code hackathon.</p>
+              <div class="tag-row">
+                <span class="tag">Base44</span>
+                <span class="tag">Claude API</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Web Speech API</span>
+                <span class="tag">UX Design</span>
+                <span class="tag">Privacy by Design</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/HanishaPulimaddi/wayfind" target="_blank" rel="noopener">Code →</a>
+                <a href="https://wayfind.base44.app" target="_blank" rel="noopener">Live →</a>
+              </div>
+              <div class="project-details-hint">View case study →</div>
+              <template class="project-full">
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <h4>Problem</h4>
+                  </div>
+                  <ul>
+                    <li>Lou's Place supports 818 women a year across 11,727 visits, with no recurrent government funding and no dedicated admin support</li>
+                    <li>Their spreadsheet of community services had been abandoned</li>
+                    <li>Services change faster than anyone can keep a list up to date</li>
+                    <li>The cost of maintaining the list fell on one person while the benefit was spread across the whole team</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.5 2 4.5.6.7 1 1.3 1 2.5h6c0-1.2.4-1.8 1-2.5.8-1 2-2.3 2-4.5a6 6 0 0 0-6-6z"/></svg>
+                    <h4>Solution</h4>
+                  </div>
+                  <ul>
+                    <li>A caseworker enters what a woman needs and her situation, and each candidate service is checked live at the moment of use</li>
+                    <li>Services are filtered on eligibility rules learned from real refusals rather than published criteria, and stops are ordered so dependencies work</li>
+                    <li>After the call, a 15-second voice debrief is transcribed and written back as structured rules and corrections</li>
+                    <li>Claude Haiku does three narrow jobs: turning a situation into constraints, extracting the debrief, and drafting the referral note. Deterministic code owns eligibility, ordering and freshness</li>
+                    <li>Privacy by design: records hold circumstance flags and outcomes, never client identifiers</li>
+                    <li>A two-day prototype on sample data. Live verification is simulated; the eligibility, ordering, confidence decay and write-back logic are real</li>
+                  </ul>
+                </div>
+                <div class="project-modal-col">
+                  <div class="project-modal-col-head">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+                    <h4>Learnings</h4>
+                  </div>
+                  <ul>
+                    <li>Failed processes usually fail for economic reasons: moving the maintenance cost to the point of use fixed what a better UI couldn't</li>
+                    <li>The taxonomy matters more than the model: "full today" is temporary, "wants photo ID" is structural, "intake closed" is a data correction</li>
+                    <li>Voice earns its place where answers are unpredictable, and one debrief sentence captured four separate facts</li>
+                    <li>Contrast is a structural constraint, not a finishing step: the brand colour and the action colour often can't be the same</li>
+                    <li>Cost modelling took projected spend from ~$6/month to under $2 by making the system skip work rather than do it cheaply</li>
+                    <li>Every number in a pitch should trace back to a published source or a stated assumption</li>
+                  </ul>
+                </div>
+              </template>
+            </div>
+          </article>
+
           <article class="project-card">
             <div class="project-thumb">
               <span class="glyph">In Progress</span>
             </div>
-            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: MyMentalGlowupGuru">
-              <h3>MyMentalGlowupGuru <span class="project-status-tag">In Progress</span></h3>
-              <p>A personalized RAG system for daily knowledge briefing, currently in development.</p>
+            <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: OmniScan">
+              <h3>OmniScan: Medical Imaging on AWS <span class="project-status-tag">In Progress</span></h3>
+              <p>A full-stack chest X-ray analysis platform: a pretrained classifier scores each scan and an LLM turns the scores into a radiology-style report. The current work is moving it from a laptop to production-grade AWS infrastructure.</p>
               <div class="tag-row">
-                <span class="tag">RAG</span>
                 <span class="tag">Python</span>
-                <span class="tag">LLM APIs</span>
-                <span class="tag">Text-to-Speech</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">React</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Terraform</span>
+                <span class="tag">Docker</span>
+                <span class="tag">GitHub Actions</span>
               </div>
               <div class="project-links">
                 <span class="project-link-disabled">Code (in progress)</span>
@@ -424,9 +483,10 @@
                     <h4>Problem</h4>
                   </div>
                   <ul>
-                    <li>Staying on top of current affairs is hard in a fast-paced information environment</li>
-                    <li>Building broad, domain-level knowledge — politics, global trade, arts, music, and more — takes daily effort</li>
-                    <li>Most news consumption is passive, so little of it is actually retained</li>
+                    <li>The application worked end to end, but only on a laptop</li>
+                    <li>A PyTorch image weighs ~2.5 GB, so it's slow to ship and expensive to run</li>
+                    <li>Medical imaging needs secrets, encryption and access control built in from the start, not added later</li>
+                    <li>Deploys can't take the service down or leave the database schema out of step with the code</li>
                   </ul>
                 </div>
                 <div class="project-modal-col">
@@ -435,9 +495,12 @@
                     <h4>Solution</h4>
                   </div>
                   <ul>
-                    <li>A RAG-powered voice briefing app delivering a personalized 5-minute daily news read</li>
-                    <li>Engineered around habit formation, so the briefing fits into a daily routine</li>
-                    <li>Built around active recall, so users retain what they hear instead of just listening passively</li>
+                    <li>A torchxrayvision DenseNet121 (trained on NIH, CheXpert, MIMIC-CXR and PadChest) scores each X-ray, and a Groq LLM writes the report</li>
+                    <li>FastAPI on Gunicorn/Uvicorn with JWT auth, rate limiting, scan history in PostgreSQL, and a React 19 + TypeScript frontend</li>
+                    <li>Containers run on ECS Fargate from ECR, behind an Application Load Balancer in a two-AZ VPC with public and private subnets</li>
+                    <li>RDS PostgreSQL, S3 with presigned URLs, and secrets injected from Secrets Manager at runtime</li>
+                    <li>CloudFront, ACM and Route 53 at the edge, with CloudWatch logs, alarms and dashboards</li>
+                    <li>All infrastructure is in Terraform with remote state and locking, and GitHub Actions deploys through OIDC with no stored keys</li>
                   </ul>
                 </div>
                 <div class="project-modal-col">
@@ -446,8 +509,12 @@
                     <h4>Status</h4>
                   </div>
                   <ul>
-                    <li>Actively in development</li>
-                    <li>Case study will be updated with build details and outcomes as the project progresses</li>
+                    <li>Actively in development: the application is complete, and the deployment is the work being showcased</li>
+                    <li>Cut the Docker image from ~2.5 GB to 576 MB with multi-stage builds</li>
+                    <li>Right-sizing compute from measured profiling data rather than estimates</li>
+                    <li>Least-privilege IAM, with separate execution and task roles and policies scoped to specific ARNs</li>
+                    <li>Zero-downtime deploys using health checks, circuit breakers, and migrations run as a separate pre-deploy step</li>
+                    <li>Designing around NAT Gateway and IPv4 costs, and working through HIPAA service eligibility and the regulatory boundary for diagnostic software</li>
                   </ul>
                 </div>
               </template>
@@ -896,81 +963,6 @@
     </div>
   </section>
 
-  <!-- ===================== THOUGHTS ===================== -->
-  <section id="thoughts">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">Writing</div>
-          <h2>Thoughts</h2>
-        </div>
-      </div>
-
-      <div class="thoughts-grid reveal">
-
-        <article class="thought-card">
-          <h3>Engineering Begins Before the First Line of Code</h3>
-          <div class="thought-date">9th January, 2026</div>
-          <p class="thought-excerpt">Most people imagine the role of a software engineer as simply coding a solution to a problem. But in reality, coding is just a fraction of what we do. Six months ago, a question kept resurfacing in my mind: "If AI is getting better at writing code, what becomes the engineer's real responsibility?"</p>
-          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
-          <template class="thought-full">
-            <p>Most people imagine the role of a software engineer as simply coding a solution to a problem. But in reality, coding is just a fraction of what we do. Six months ago, a question kept resurfacing in my mind: "If AI is getting better at writing code, what becomes the engineer's real responsibility?"</p>
-            <p>Artificial intelligence, more specifically generative and agentic AI, has rapidly transformed the software industry. Tools such as Claude, GPT, and Cursor have become part of developers' daily workflows. (DeBellis et al., 2025) AI has evolved at a remarkable pace, from the deep learning breakthrough of AlexNet in 2012 (Krizhevsky et al., 2012) to today's multimodal, agentic systems. The scale and speed of this progress are difficult to fully grasp, especially for students who are still building their technical foundations. Like many others, I questioned whether the role I saw myself pursuing would continue to exist. If AI could increasingly handle implementation, then where would software engineers continue to create value?</p>
-            <p>The answer became clearer during Arrayah, a startup accelerator program for bullish builders. My co-founder and I entered with what we believed was a strong idea: an automated compliance solution for architects. Initially, we believed the challenge was extracting compliance rules from lengthy, unstructured planning documents. However, after speaking with architects, we realised that extracting the rules was only one part of the problem. The real challenge was helping architects interpret those rules, identify opportunities and permissible design variations within them, and use that understanding to create smarter design plans. Those conversations challenged our assumptions and reshaped our understanding of the problem, ultimately changing the direction of our product. Rather than asking, "How do we build this?" we found ourselves repeatedly asking, "Have we correctly understood the problem we're trying to solve and how do we best solve it?" It's the difference between treating a symptom and diagnosing the disease. One provides temporary relief, the other solves the underlying problem. That shift fundamentally changed how I viewed software engineering.</p>
-            <p>Software engineering isn't just about writing code. It's about understanding problems well enough to know what should be built, why it should be built, and whether the solution actually creates value. This philosophy isn't unique to my experience. Amazon's Working Backwards approach begins by defining the customer problem and desired outcome before implementation. (Bryar &amp; Carr, 2021) The principle is simple: don't start building until you understand what your customers actually need. Similarly, Agile Scrum encourages teams to build incrementally, gather feedback, and continuously refine their solutions. It recognises that understanding evolves, and therefore software must evolve with it. (Schwaber &amp; Sutherland, 2020)</p>
-            <p>This made me realise something that AI has unintentionally highlighted. For years, many people, including myself, associated software engineering primarily with writing code. Today, AI is becoming increasingly capable of generating that code. But AI cannot determine whether we have correctly understood the problem. It cannot independently uncover user needs, challenge assumptions, balance technical and business trade-offs, or decide whether a solution creates genuine value. Those responsibilities still belong to engineers.</p>
-            <p>Rather than changing software engineering, AI is exposing what software engineering has always been. Coding has never been the end goal; it has always been the tool. The real value of a software engineer lies in asking better questions, understanding users, exercising sound judgement, and making decisions that technology alone cannot. AI will continue to make implementation faster, but I believe engineering judgement, the ability to determine what should be built, why it matters, and how it creates value, will continue to distinguish exceptional software engineers in the years ahead.</p>
-            <div class="thought-refs">
-              <span>Bryar, C., &amp; Carr, B. (2021). Working Backwards: Insights, Stories, and Secrets from Inside Amazon. St. Martin's Press.</span>
-              <span>DeBellis, D., Storer, K., Harvey, N., et al. (2025). DORA 2025 State of AI-assisted Software Development Report. Google Cloud DORA.</span>
-              <span>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks. Advances in Neural Information Processing Systems, 25, 1097-1105.</span>
-              <span>Schwaber, K., &amp; Sutherland, J. (2020). The Scrum Guide.</span>
-            </div>
-          </template>
-        </article>
-
-        <article class="thought-card">
-          <h3>The Stories of the Mountain</h3>
-          <div class="thought-date">18th November, 2025</div>
-          <p class="thought-excerpt">"I can't do this anymore!" I stopped. I sat down on the side of the mountain and gave up. I've always loved walking through nature. There's something calming about towering trees, mountains disappearing into the clouds, and standing in freezing streams under a sky full of stars.</p>
-          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
-          <template class="thought-full">
-            <p>"I can't do this anymore!" I stopped. I sat down on the side of the mountain and gave up.</p>
-            <p>I've always loved walking through nature. There's something calming about towering trees, mountains disappearing into the clouds, and standing in freezing streams under a sky full of stars. So, when the UTS Hiking Club announced an overnight hike to Acacia Flat in the Blue Mountains, my friend and I didn't think twice.</p>
-            <p>As we began the trail, everyone was laughing, singing, and making up songs to remember the weekend. The hike leader smiled and joked, "I like how optimistic you all are. I hope you stay the same by the time this hike is over." The hike hadn't even officially begun when the group decided to make things "a little more interesting." Instead of heading straight towards the campground, we took a detour around the Grand Canyon Track, a casual three-hour addition.</p>
-            <p>Three hours later, after climbing over rocks, stepping through puddles, squeezing between bushes, the official trail was only just beginning. As the group started to descend into the valley, so did my will to live. The first few hours felt manageable. We laughed, took photos, and convinced ourselves we were making great progress. By the fifth hour, we had taken countless breaks, emptied more water bottles than I could count, and the campground was still nowhere in sight.</p>
-            <p>Someone called out from behind us. "Girls, your pace is slow. At this rate, we'll take another hour." I was petrified. I picked up my pace. Looking back, I don't think they were discouraging us, they were simply stating facts. But my mind had to make up its own story. The sun began to set and we hiked in the dark. Armed with a phone flashlight instead of a headlamp, shoes whose soles had long given up, and a wooden stick proudly pretending to be a hiking pole. The boys kept encouraging us. "Just twenty more minutes." After hearing it for hours, those words stopped sounding like encouragement and started sounding like false hope.</p>
-            <p>Nine hours after we had started, we finally reached the campground. That relief lasted less than a minute. There was no network and the last message I had sent my mum read, "I'll message you when I reach the campground." I was worried that I have stressed my family. This deeply made me realise the things I have taken for granted and what I still have to be grateful for.</p>
-            <p>The next morning, we woke up with a little more hope than energy. This time, the goal wasn't just to finish the hike. We wanted to reach somewhere with a network and let our families know we were okay. For a while, that was enough to keep us moving. The painkillers I had taken the night before slowly wore off and I was in pain. Somewhere between trying to catch my breath and convincing myself to keep walking, our group split into two. My friend ended up in the group ahead. I stayed behind. "Did we lose the track?" "What if she isn't okay?" "What if we don't end up back together?" By the time we reunited, I didn't even say anything. I just hugged her.</p>
-            <p>Strange, how I had always believed resilience meant doing hard things on your own. Somewhere on that mountain, I realised that resilience is allowing others to carry part of your weight until you remember how to carry yourself again.</p>
-            <p>Five hours into the hike, somewhere in the middle of the mountains with barely enough space for one person to stand, I stopped. I sat down. I looked at the group and quietly said, "You guys go ahead. I'm done." For the first time in my life, I genuinely believed I had reached my limit. I looked up at the clouds and whispered the only thing I could think of. "Please... just let this end. I can't do this anymore." My friends stayed with me without saying much, just being there in silence. In that moment I realised it wasn't my body that had given up, but my mind that had convinced me I couldn't go on.</p>
-            <p>Moments later I got up. Eventually, we reached Victoria Falls. My friend grabbed my hand and together we yelled, "Carpe Diem!" For the first time that weekend, I wasn't thinking about how much further we had to go. I was simply grateful to have made it that far.</p>
-            <p>The hike leader smiled and pointed towards the final stretch. "Just another 600 metres." After everything we had already climbed, six hundred metres somehow sounded both comforting and terrifying. The final climb was nothing but an endless staircase. My body still hurts. My legs were still screaming at me to stop. The mountain hadn't suddenly become easier. But something else had changed.</p>
-            <p>The stories in my head had. Instead of asking, "Can I make it?" I found myself asking, "What's the next step?" Somewhere between those two questions, everything changed. The long hike ended and we finally reached. Our reward, a dreamy view of the milky way. It was divine.</p>
-            <p>Ironically, nothing about me had changed physically. I wasn't fitter. I wasn't stronger. Yet somehow, I walked away feeling different. Looking back, I don't think the biggest lesson from that hike was resilience. It was learning that giving up isn't always the end of the story. We spend so much of our lives believing the stories our minds create. "I'm not enough, I'm slowing everyone down, I can't do this." Sometimes those stories prepare us, but sometimes they're simply wrong. The mountain never told me to stop; my mind did. I gave up. I sat down, convinced I had nothing left to give. Yet, because of the kindness of those who stayed beside me and the quiet decision to take one more step, I stood up again. For that, I'll always be grateful. That hike reminded me that strength isn't about never reaching your breaking point. It's about finding the courage to get back up, even when you've already convinced yourself you can't.</p>
-          </template>
-        </article>
-
-        <article class="thought-card">
-          <h3>The Black Box</h3>
-          <div class="thought-date">7th October, 2022</div>
-          <p class="thought-excerpt">A withering 8-inch black shoebox sits on the bottommost shelf of a white cupboard in a purple-walled room. Its lid screams "DO NOT TOUCH" and "BELONGS TO HANISHA" in a shaky red sparkle ink. Inside its weary cardboard skin rests my childhood memories.</p>
-          <button type="button" class="thought-read-btn" data-thought-open>Read fully →</button>
-          <template class="thought-full">
-            <p class="thought-note"><em>Author's Note: This piece was written during my final years of high school. I've chosen to preserve it as it was originally written because it reflects the person I was at that stage of my life and the experiences that shaped me.</em></p>
-            <p>A withering 8-inch black shoebox sits on the bottommost shelf of a white cupboard in a purple-walled room. Its lid screams "DO NOT TOUCH" and "BELONGS TO HANISHA" in a shaky red sparkle ink. Inside its weary cardboard skin rests my childhood memories. Since it is impossible to show a video recording of every second of my life, relive my defining moments through the items in this box.</p>
-            <p>Cross-legged, I sit on the floor with the box in my lap. As I reach my hands inside the box, the first thing I grab is a pink teacup, part of a complete kitchen set for kids. It takes me back to when I was five and was obsessed with make-believe cooking with my sisters. That was the first time I worked in a team. One sister would mix the mud with water, and the other would hunt the garden for flowers to decorate the chocolate cake while I shaped the cake with the muddy slurry. Together we would make the perfect dish, a taste of success!</p>
-            <p>Next, I pull out a yellow badge with a silver border and a roaring lion in the center with the word "Captain." It was shinier when it sat on the left side of my school shirt for three years—marking me out from the crowd as a student council member. The lengthy brainstorming sessions to choose songs or costumes for the music and dance competition, the late-night track editing, and the numerous discussions I had with management to get my team more rehearsal time were all factors that contributed to winning the competitions. In victory and loss, my team and I stood together.</p>
-            <p>The delegate handbook of SMISMUN, my school's Model United Nations, barely fits in the box. I worked in the secretariat for two years as Head of the Organizing Committee and Event Coordinator. I endured sleepless nights and meal-less days to expand my school's network by working with food trucks and DJs, organizing social nights, and opening and closing ceremonies. My communication skills developed in requesting over 500 delegates to participate in our MUN. I helped make content for our MUN's Instagram page. The number of delegate handbooks packed was countless, but staying back in school to complete these tasks with my peers and seniors made it all pass in a breeze.</p>
-            <p>The box then pushes out the polaroid of Right To A Good Bite's (RTAGB) first club meeting on 21st May 2020, bringing happy tears to my eyes. I started RTAGB at school to raise awareness about the relation of food and diet to mental and physical health. Over time, with increasing passionate club members, it became a safe space for conversations in school. Our internal discussions led to researched seminars, invited talks by health professionals, and creative plays on the issues for the entire school to attend. On our Instagram page, we posted parodies, posts, and reels on our monthly topics, such as eating disorders, organic farming, food adulteration, and "Covid: Food Myth-Busting."</p>
-            <p>The last item is a black journal with the faded minions' stickers. I opened the page containing a bucket list I made when I was eight. Amongst them, the already checked boxes read: getting a phone, a picnic at a waterpark, becoming a student council member, helping the community, and more. The remaining unchecked box read: being the first person in my family to study abroad, becoming a successful entrepreneur, developing innovative products, buying a house, and many other dreams which I am working to accomplish in my life. As I closed my eyes, I recalled my achievements and the hurdles I crossed to procure them. I became an improved person at every stage, making meaningful contributions to the team. Sometimes my leadership brought us closer to victory; other times, my backhanded support in the group made me appreciate the value of teamwork.</p>
-          </template>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="container reveal">
@@ -1050,6 +1042,6 @@
 <footer>© <span id="year"></span> Hanisha Pulimaddi Portfolio </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script src="script.js?v=20260801p"></script>
+<script src="script.js?v=20260902b"></script>
 </body>
 </html>

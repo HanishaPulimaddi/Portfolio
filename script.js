@@ -244,45 +244,6 @@ if (projectVideoWraps.length) {
   });
 }
 
-// Thoughts modal — "Read fully" expands an article card into the full
-// write-up, styled like the rest of the site rather than an embedded PDF.
-const thoughtCards = document.querySelectorAll('.thought-card');
-const thoughtModal = document.getElementById('thoughtModal');
-if (thoughtCards.length && thoughtModal) {
-  const thoughtModalTitle = document.getElementById('thoughtModalTitle');
-  const thoughtModalDate = document.getElementById('thoughtModalDate');
-  const thoughtModalBody = document.getElementById('thoughtModalBody');
-  const thoughtModalScroll = thoughtModal.querySelector('.thought-modal-scroll');
-  let lastFocusedThought = null;
-
-  const openThought = (card) => {
-    const template = card.querySelector('template.thought-full');
-    if (!template) return;
-    lastFocusedThought = document.activeElement;
-    thoughtModalTitle.textContent = card.querySelector('h3').textContent;
-    thoughtModalDate.textContent = card.querySelector('.thought-date').textContent;
-    thoughtModalBody.replaceChildren(template.content.cloneNode(true));
-    thoughtModalScroll.scrollTop = 0;
-    thoughtModal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    thoughtModal.querySelector('.thought-modal-close').focus();
-  };
-
-  const closeThought = () => {
-    thoughtModal.hidden = true;
-    document.body.style.overflow = '';
-    lastFocusedThought?.focus();
-  };
-
-  thoughtCards.forEach((card) => {
-    card.querySelector('[data-thought-open]')?.addEventListener('click', () => openThought(card));
-  });
-  thoughtModal.querySelectorAll('[data-thought-close]').forEach((el) => el.addEventListener('click', closeThought));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !thoughtModal.hidden) closeThought();
-  });
-}
-
 // Project modal — clicking a project card's content (outside its links)
 // expands it into a dialog with the problem, solution, and learnings.
 const projectBodies = document.querySelectorAll('[data-project-open]');

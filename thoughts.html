@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyThoughts</title>
+<script>
+  (function(){
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="stylesheet" href="style.css?v=20260911b" />
+</head>
+<body>
+
+<nav class="navbar" aria-label="Primary">
+  <div class="nav-brand">
+    <a href="index.html" class="nav-name-link"><span class="nav-name">Hanisha Pulimaddi</span></a>
+  </div>
+
+  <div class="nav-menu"></div>
+
+  <div class="nav-right">
+    <a href="index.html" class="nav-icon-link" aria-label="Back to portfolio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" class="nav-icon-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+    </a>
+    <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light and dark theme" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <section class="blog-masthead">
+    <p class="blog-masthead-quote">&ldquo;Growing louder than my doubts!&rdquo;</p>
+    <div class="blog-masthead-image">
+      <img src="Images/ThoughtsHeroPhoto.jpeg" alt="" />
+    </div>
+  </section>
+
+  <div class="blog-shell">
+
+    <aside class="blog-sidebar">
+      <div class="blog-count" id="blogCount"></div>
+      <nav class="blog-toc" id="blogToc" aria-label="Articles"></nav>
+    </aside>
+
+    <section class="blog-content">
+
+      <div class="blog-panel blog-about" id="blogAbout">
+        <div class="blog-author">
+          <img class="blog-author-avatar" src="Images/ProfilePicture.jpeg" alt="Hanisha Pulimaddi" />
+          <div class="blog-author-meta">
+            <span class="blog-author-name">Hanisha Pulimaddi</span>
+          </div>
+        </div>
+
+        <h2 class="blog-about-title">Essays, half-formed ideas, and things worth remembering.</h2>
+        <p>Nothing here is on a schedule. New pieces show up whenever there's something worth saying. Pick one from the list on the left, or start with the most recent.</p>
+        <a href="#" id="blogLatestLink" class="blog-cta">Read the latest essay →</a>
+
+        <div class="blog-contact">
+          <span class="blog-contact-label">Get in touch</span>
+          <div class="hero-social">
+            <a class="hero-social-icon" href="mailto:hani.pulimaddi@outlook.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+            </a>
+            <a class="hero-social-icon" href="https://www.linkedin.com/in/hanisha-pulimaddi-368545190" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <article class="blog-panel blog-article" id="blogArticle" hidden>
+        <span class="blog-tag" id="articleTag"></span>
+        <h1 id="articleTitle"></h1>
+
+        <div class="blog-byline">
+          <img class="blog-byline-avatar" src="Images/ProfilePicture.jpeg" alt="" />
+          <div class="blog-byline-meta">
+            <a class="blog-byline-name" href="thoughts.html">Hanisha Pulimaddi</a>
+            <span class="blog-byline-date"><span id="articleDate"></span> · <span id="articleReadTime"></span></span>
+          </div>
+          <div class="blog-share">
+            <a class="blog-share-btn" id="shareFacebook" target="_blank" rel="noopener" aria-label="Share on Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.57 1.53-3.99 3.87-3.99 1.12 0 2.3.2 2.3.2v2.53h-1.3c-1.28 0-1.68.8-1.68 1.62V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a class="blog-share-btn" id="shareX" target="_blank" rel="noopener" aria-label="Share on X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3h3.06l-6.69 7.64L22.5 21h-6.16l-4.83-6.32L6 21H2.93l7.16-8.18L2 3h6.32l4.37 5.78L18.24 3Zm-1.08 16.17h1.7L7.93 4.74h-1.8l11.03 14.43Z"/></svg>
+            </a>
+            <a class="blog-share-btn" id="shareLinkedIn" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.5 8.5h4.37v1.98h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.5V8.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="blog-lead" id="articleLead"></div>
+        <div class="thought-article-body" id="articleBody"></div>
+      </article>
+
+    </section>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Hanisha Pulimaddi</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="script.js?v=20260902c"></script>
+<script src="thoughts-data.js?v=20260911a"></script>
+<script src="thoughts.js?v=20260911a"></script>
+</body>
+</html>
