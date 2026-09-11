@@ -10,7 +10,6 @@
   const countEl = document.getElementById('blogCount');
   const aboutView = document.getElementById('blogAbout');
   const articleView = document.getElementById('blogArticle');
-  const articleTag = document.getElementById('articleTag');
   const articleDate = document.getElementById('articleDate');
   const articleReadTime = document.getElementById('articleReadTime');
   const articleTitle = document.getElementById('articleTitle');
@@ -62,7 +61,6 @@
   }
 
   function renderArticle(thought) {
-    articleTag.textContent = thought.category;
     articleDate.textContent = thought.date;
     articleReadTime.textContent = `${estimateReadMinutes(thought.body)} min read`;
     articleTitle.textContent = thought.title;

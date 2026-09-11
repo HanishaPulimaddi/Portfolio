@@ -1174,21 +1174,9 @@ h1,h2,h3,h4{
   box-shadow:0 18px 44px rgba(28,63,110,.12);
   padding:clamp(28px, 4vw, 64px);
 }
-.blog-tag{
-  display:inline-block;
-  font-family:var(--font-mono);
-  font-size:.68rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--blog-article-ink);
-  background:rgba(28,63,110,.12);
-  border:1px solid rgba(28,63,110,.24);
-  padding:6px 12px;
-}
 .blog-article h1{
   font-size:clamp(1.9rem, 3.6vw, 2.7rem);
   color:var(--blog-article-ink);
-  margin-top:18px;
 }
 
 .blog-byline{
