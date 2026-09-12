@@ -391,8 +391,17 @@
 
         <div class="projects-page">
           <article class="project-card">
-            <div class="project-thumb">
-              <span class="glyph">WayFind</span>
+            <div class="project-thumb project-video-wrap" data-video-wrap>
+              <video class="project-video" muted loop playsinline preload="none" data-src="Videos/Wayfind.mp4" aria-label="WayFind demo video"></video>
+              <div class="video-controls">
+                <button type="button" class="video-btn video-mute-btn is-muted" data-video-mute aria-label="Unmute video" aria-pressed="false">
+                  <svg class="icon-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg class="icon-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <button type="button" class="video-btn" data-video-expand aria-label="Expand video">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                </button>
+              </div>
             </div>
             <div class="project-body" data-project-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: WayFind">
               <h3>WayFind: Crisis Centre Referral Tool</h3>
